@@ -15,6 +15,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root) //important to set
 
+        binding.buttonReset.setOnClickListener {
+            binding.textViewPremium.setText("")
+            binding.spinnerAge.setSelection(0)
+            if(binding.checkBoxSmoker.isChecked){
+                binding.checkBoxSmoker.setChecked(false)
+            }
+            binding.radioGroupGender.clearCheck()
+        }
+
         //binding.spinnerAge.setOnItemClickListener(this)
         binding.buttonCalculate.setOnClickListener {
             val age = binding.spinnerAge.selectedItemPosition
@@ -88,8 +97,4 @@ class MainActivity : AppCompatActivity() {
             binding.textViewPremium.text = String.format("%s %d", myCurrency.currencyCode.toString(), premium)
         }
     }
-
-//        binding.buttonReset.setOnClickListener {
-//
-//        }
 }
